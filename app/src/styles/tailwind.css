@@ -121,7 +121,7 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 210 40% 96.1%;
     --popover-foreground: 215.4 16.3% 20%;
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 142 55% 30%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -133,7 +133,7 @@
     --destructive-foreground: var(--color-red-800);
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 142 55% 30%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -148,10 +148,10 @@
     --syntax-string: 27 87% 67%; /* orange/peach - strings & variables */
     --syntax-keyword: 10 50% 50%; /* red/brown - keywords */
 
-    /* Accent gradient stops (aligned with brand hue 217) */
-    --accent-from: 217 85% 50%;
-    --accent-to: 217 100% 70%;
-    --accent-glow: 217 95% 60%;
+    /* Accent gradient stops (habitat solarpunk: leaf-green → sunlit chartreuse) */
+    --accent-from: 142 60% 38%;
+    --accent-to: 88 68% 50%;
+    --accent-glow: 110 62% 46%;
 
     /* Status colors */
     --color-danger: 0 84.2% 60.2%;
@@ -161,12 +161,12 @@
     /* Sidebar */
     --sidebar: 0 0% 98%;
     --sidebar-foreground: 222.2 84% 4.9%;
-    --sidebar-primary: 222.2 47.4% 11.2%;
+    --sidebar-primary: 142 55% 30%;
     --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 210 40% 96.1%;
-    --sidebar-accent-foreground: 222.2 47.4% 11.2%;
+    --sidebar-accent: 120 30% 94%;
+    --sidebar-accent-foreground: 142 47% 16%;
     --sidebar-border: 214.3 31.8% 91.4%;
-    --sidebar-ring: 222.2 84% 4.9%;
+    --sidebar-ring: 142 55% 30%;
 
     --radius: 0.5rem;
 
@@ -194,7 +194,7 @@
     --card-foreground: 210 40% 98%;
     --popover: 217.2 32.6% 9%;
     --popover-foreground: 215 20.2% 76.1%;
-    --primary: 217 71% 40%;
+    --primary: 142 64% 40%;
     --primary-foreground: 0 0% 100%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -206,7 +206,7 @@
     --destructive-foreground: var(--color-red-600);
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 217 71% 40%;
+    --ring: 142 64% 40%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -221,20 +221,20 @@
     --syntax-string: 20 90% 80%; /* peach/orange - strings & variables */
     --syntax-keyword: 220 100% 65%; /* blue - keywords */
 
-    /* Accent gradient stops (aligned with brand hue 217, darker for dark mode) */
-    --accent-from: 217 80% 45%;
-    --accent-to: 217 100% 60%;
-    --accent-glow: 217 90% 52%;
+    /* Accent gradient stops (habitat solarpunk: leaf-green → sunlit chartreuse) */
+    --accent-from: 142 62% 40%;
+    --accent-to: 88 72% 56%;
+    --accent-glow: 110 66% 50%;
 
     /* Sidebar */
     --sidebar: 0 0% 3%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 217 71% 40%;
+    --sidebar-primary: 142 64% 40%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent: 142 24% 16%;
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 217.2 32.6% 17.5%;
-    --sidebar-ring: 217 71% 40%;
+    --sidebar-ring: 142 64% 40%;
     --success: var(--color-emerald-500);
     --success-foreground: var(--color-emerald-600);
     --info: var(--color-violet-500);

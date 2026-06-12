@@ -34,8 +34,9 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Cogni",
-  description: "Web3 Gov + Web2 AI",
+  title: "Cogni Habitat — Crypto-Coordinated Housing Commons",
+  description:
+    "Co-buy, co-govern, and steward real-world housing together. A DAO-native commons for cooperative property.",
 };
 
 // See operator/app/src/app/layout.tsx for rationale — `headers()` in the

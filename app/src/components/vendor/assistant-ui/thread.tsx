@@ -105,8 +105,8 @@ const ThreadWelcome: FC = () => {
             What do you want to build together?
           </div>
           <div className="aui-thread-welcome-message-inner fade-in slide-in-from-bottom-2 animate-in text-2xl text-muted-foreground/65 delay-100 duration-300 ease-out">
-            Start a project, join one, or ship a change—Cogni helps with the
-            next step.
+            Co-buy a home, start a housing DAO, or steward a commons—Habitat
+            helps with the next step.
           </div>
         </div>
       </div>
@@ -119,15 +119,16 @@ const ThreadSuggestions: FC = () => {
     <div className="aui-thread-welcome-suggestions grid w-full grid-cols-1 gap-2 pb-2 sm:grid-cols-2">
       {[
         {
-          title: "Dream of",
-          label: "a community-owned project",
+          title: "Co-buy",
+          label: "a home with your community",
           action:
-            "Dream of a community-owned AI, serving one random niche of your choice",
+            "Walk me through co-buying a home with a small group through a housing DAO",
         },
         {
-          title: "Tell me about",
-          label: "the builders behind cogni",
-          action: "Tell me about the builders behind Cogni",
+          title: "Start",
+          label: "a housing commons DAO",
+          action:
+            "Help me start a crypto-coordinated housing commons for cooperative, co-governed ownership",
         },
       ].map((suggestedAction, index) => (
         <div

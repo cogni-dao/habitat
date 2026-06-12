@@ -34,18 +34,18 @@ export function NewHomeHero(): ReactElement {
         <h1 className="relative z-20 whitespace-nowrap text-center font-bold text-2xl text-foreground md:text-5xl lg:text-6xl">
           Build{" "}
           <span className="relative inline-block text-gradient-accent">
-            community-owned
+            housing commons
             {/* Sparkles Effect Container */}
             <div className="absolute top-full left-0 h-28 w-full md:h-40">
               {/* Gradients */}
               {/* eslint-disable-next-line ui-governance/no-raw-colors, ui-governance/no-arbitrary-non-token-values */}
-              <div className="absolute top-0 left-0 h-[2px] w-full bg-indigo-500 blur-sm [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]" />
+              <div className="absolute top-0 left-0 h-[2px] w-full bg-green-500 blur-sm [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]" />
               {/* eslint-disable-next-line ui-governance/no-raw-colors */}
-              <div className="absolute top-0 left-0 h-px w-full bg-indigo-500 [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]" />
+              <div className="absolute top-0 left-0 h-px w-full bg-green-500 [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]" />
               {/* eslint-disable-next-line ui-governance/no-raw-colors, ui-governance/no-arbitrary-non-token-values */}
-              <div className="absolute top-0 left-0 h-[5px] w-full bg-sky-500 blur-sm [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]" />
+              <div className="absolute top-0 left-0 h-[5px] w-full bg-lime-500 blur-sm [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]" />
               {/* eslint-disable-next-line ui-governance/no-raw-colors */}
-              <div className="absolute top-0 left-0 h-px w-full bg-sky-500 [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]" />
+              <div className="absolute top-0 left-0 h-px w-full bg-lime-500 [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]" />
 
               {/* Core component - Mobile */}
               <SparklesCore
@@ -56,11 +56,11 @@ export function NewHomeHero(): ReactElement {
                 particleDensity={4000}
                 className="h-full w-full md:hidden"
                 particleColor={[
-                  "#A855F7",
                   "#22C55E",
+                  "#4ADE80",
+                  "#84CC16",
                   "#EAB308",
-                  "#EF4444",
-                  "#00C9FF",
+                  "#10B981",
                 ]}
               />
 
@@ -73,11 +73,11 @@ export function NewHomeHero(): ReactElement {
                 particleDensity={1200}
                 className="hidden h-full w-full md:block"
                 particleColor={[
-                  "#A855F7",
                   "#22C55E",
+                  "#4ADE80",
+                  "#84CC16",
                   "#EAB308",
-                  "#EF4444",
-                  "#00C9FF",
+                  "#10B981",
                 ]}
               />
 
@@ -85,7 +85,7 @@ export function NewHomeHero(): ReactElement {
               <div className="absolute inset-0 h-full w-full bg-background [mask-image:radial-gradient(250px_100px_at_top,transparent_20%,white)] md:[mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]" />
             </div>
           </span>{" "}
-          AI apps.
+          together.
         </h1>
 
         {/* Content Below Sparkles */}
@@ -123,7 +123,8 @@ export function NewHomeHero(): ReactElement {
             </div>
 
             <p className="mt-8 max-w-3xl text-lg text-muted-foreground sm:text-xl">
-              Web3 Gov + Web2 AI
+              Crypto-coordinated housing commons — co-buy, co-govern, and
+              steward real homes together.
             </p>
           </div>
         </div>
