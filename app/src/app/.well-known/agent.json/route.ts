@@ -19,6 +19,14 @@
  */
 
 import { NextResponse } from "next/server";
+import {
+	getNodeBrandColor,
+	getNodeBrandIcon,
+	getNodeHook,
+	getNodeMission,
+	getNodeName,
+	getNodeThumbnail,
+} from "@/shared/config/repoSpec.server";
 import { serverEnv } from "@/shared/env";
 
 export const runtime = "nodejs";
@@ -31,42 +39,62 @@ export const runtime = "nodejs";
  * falling back to the raw `host` and `request.url` for local/dev usage.
  */
 function publicOrigin(request: Request): string {
-  const url = new URL(request.url);
-  const host =
-    request.headers.get("x-forwarded-host") ??
-    request.headers.get("host") ??
-    url.host;
-  const proto =
-    request.headers.get("x-forwarded-proto") ?? url.protocol.replace(":", "");
-  return `${proto}://${host}`;
+	const url = new URL(request.url);
+	const host =
+		request.headers.get("x-forwarded-host") ??
+		request.headers.get("host") ??
+		url.host;
+	const proto =
+		request.headers.get("x-forwarded-proto") ?? url.protocol.replace(":", "");
+	return `${proto}://${host}`;
 }
 
 export async function GET(request: Request) {
-  const env = serverEnv();
-  const origin = publicOrigin(request);
-  return NextResponse.json({
-    name: "Cogni Node API",
-    version: "v1",
-    buildSha: env.APP_BUILD_SHA,
-    registrationUrl: `${origin}/api/v1/agent/register`,
-    auth: { type: "bearer", keyPrefix: "cogni_ag_sk_v1_" },
-    endpoints: {
-      completions: `${origin}/api/v1/chat/completions`,
-      graphs: `${origin}/api/v1/ai/agents`,
-      runs: `${origin}/api/v1/agent/runs`,
-      runStream: `${origin}/api/v1/agent/runs/{runId}/stream`,
-    },
-    defaults: {
-      model: "gpt-4o-mini",
-      graph_name: "poet",
-    },
-    usage: {
-      note: "completions requires graph_name for newly registered agents",
-      example: {
-        model: "gpt-4o-mini",
-        graph_name: "poet",
-        messages: [{ role: "user", content: "Hello" }],
-      },
-    },
-  });
+	const env = serverEnv();
+	const origin = publicOrigin(request);
+	return NextResponse.json({
+		name: "Cogni Node API",
+		version: "v1",
+		buildSha: env.APP_BUILD_SHA,
+		// IDENTITY_IS_REPO_SPEC_PROJECTION: the node's display identity, projected from its own repo-spec
+		// `intent` (never hardcoded). The operator reads THIS to render gallery cards — no operator-side
+		// per-node literals. A node customizes itself by editing repo-spec, not operator code.
+		identity: {
+			name: getNodeName(),
+			hook: getNodeHook(),
+			mission: getNodeMission(),
+			brand: {
+				icon: getNodeBrandIcon(),
+				color: getNodeBrandColor(),
+				thumbnail: getNodeThumbnail(),
+			},
+		},
+		registrationUrl: `${origin}/api/v1/agent/register`,
+		auth: { type: "bearer", keyPrefix: "cogni_ag_sk_v1_" },
+		endpoints: {
+			completions: `${origin}/api/v1/chat/completions`,
+			graphs: `${origin}/api/v1/ai/agents`,
+			runs: `${origin}/api/v1/agent/runs`,
+			runStream: `${origin}/api/v1/agent/runs/{runId}/stream`,
+			// Cognition substrate: session-start bundle (invariants + live skills
+			// index + domain pointers). A SessionStart hook fetches + injects it.
+			cognition: `${origin}/api/v1/cognition`,
+		},
+		cognition: {
+			bootstrapUrl: `${origin}/api/v1/cognition`,
+			sessionStartHook: `curl -fsS ${origin}/api/v1/cognition | jq -r .markdown`,
+		},
+		defaults: {
+			model: "gpt-4o-mini",
+			graph_name: "poet",
+		},
+		usage: {
+			note: "completions requires graph_name for newly registered agents",
+			example: {
+				model: "gpt-4o-mini",
+				graph_name: "poet",
+				messages: [{ role: "user", content: "Hello" }],
+			},
+		},
+	});
 }
