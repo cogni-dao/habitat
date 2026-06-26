@@ -21,7 +21,7 @@ intent:
     icon: "Sprout"
     color: "#16a34a"
 
-cogni_dao:
+governance:
   dao_contract: "0x47fb95f0b9959f89b41208a4363838bdb1c824da"
   plugin_contract: "0xc07c9dd87f15a51fcb6a122f84c36758b07363bb"
   signal_contract: "0xcb31666c19dfa25e7c28364dbe321dc7a6d792e2"
