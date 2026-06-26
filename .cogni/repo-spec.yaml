@@ -15,6 +15,11 @@ scope_key: "default"
 
 intent:
   name: habitat
+  hook: "Co-buy real estate, together"
+  mission: "Facilitating the co-buying of real estate — helping people pool resources to buy property together that they couldn't alone."
+  brand:
+    icon: "Sprout"
+    color: "#16a34a"
 
 cogni_dao:
   dao_contract: "0x47fb95f0b9959f89b41208a4363838bdb1c824da"
