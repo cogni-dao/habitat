@@ -1,35 +1,71 @@
-# AGENTS.md — Your Cogni Node
+# AGENTS.md — Cogni node session floor
 
-> This repo is a **Cogni node** minted from `node-template`. It is a sovereign
-> repo: your code lives and is built here, in its own git boundary. A shared
-> **operator** monorepo pins this repo as a submodule and runs the deploy/infra
-> plane for you — you never edit the operator's `infra/catalog`, run
-> `provision-env`, or touch Argo. See `docs/spec/node-ci-cd-contract.md` in the
-> operator monorepo for the full two-views model.
+## Non-negotiable execution wrapper
 
-## What you own (node-dev half)
+Every user task executes through the session agent-contract; satisfying the task while
+breaching this wrapper makes the work invalid.
 
-- **App + graphs + packages** at the repo root.
-- **Your CI** (`.github/workflows/`), policy (`biome`, `tsconfig`, `.dependency-cruiser.cjs`), and `Dockerfile` — `POLICY_STAYS_LOCAL`. Your CI builds + pushes your own image (`FORK_FREEDOM`).
-- **Review policy**: `.cogni/repo-spec.yaml` `gates:` + `.cogni/rules/`. A PR here routes + reviews against these (born-reviewable). Tune the gate set to your node's mission.
+1. Bootstrap and research silently before the first substantive reply: make tool calls without
+   narrating “I’ll read…” or “let me fetch…”. Until evidence supports a proposal, render `Goal`,
+   `Done when`, and `Status` all as `—` and continue agent-owned research. Any necessary interim
+   update still uses the complete status block. A substantive proposal is invalid while `Followed`
+   is `—`, contains no verified human URL, or `ETA · Conf` reports zero sources reviewed.
+2. Every human-facing reply, including answers and follow-ups, is exactly this skeleton
+   and contains no prose before, between, or after it:
 
-## Add a secret (node-dev half)
+   | 🎯 **Goal**    | <12 words or —>                              |
+   | -------------- | -------------------------------------------- |
+   | **Done when**  | <measurable final behavior or —>             |
+   | **Status**     | <symbol + at most 6 words or —>              |
+   | **ETA · Conf** | <time> · <earned percent + sources reviewed> |
+   | **Followed**   | <verified human URLs>                        |
 
-Declare the key's **shape** in `.cogni/secrets-catalog.yaml` and consume it via typed env in app code (fail-fast if missing). You do **not** set the value or wire the ExternalSecret — whoever owns the deploy env does that (`pnpm secrets:set <env> <slug> <KEY>`).
+   ***
 
-Use [`docs/guides/add-secret.md`](docs/guides/add-secret.md) or `/add-secret` for the node-local checklist.
+   | item                                 | owner                              | deliverable links | status          | next             |
+   | ------------------------------------ | ---------------------------------- | ----------------- | --------------- | ---------------- |
+   | <linked work item or proposed story> | <dev-manager, me OR subagent name> | <links or ->      | <shared status> | <ownership gate> |
 
-## Customize node identity
+   > <symbol> **Bottom line —** <at most 20 words>
 
-Use [`docs/guides/new-node-styling.md`](docs/guides/new-node-styling.md) when changing the node logo, colors, metadata, public page, or chat defaults.
+   `owner` is exactly `dev-manager, me` or `subagent <name>`. `next` is exactly an
+   agent-owned action, `👉 needs you: <decision link>`, `👀 <watch link>`, or `-`.
 
-## Contribution + knowledge
+   `Followed` is the complete evidence ledger, not highlights. Cite the material sources actually
+   used in this order: orientation → skills/guides → hub knowledge → designs/code → work items →
+   external sources. Convert a local repo path into its human GitHub blob URL at the current SHA;
+   “local” is never a reason to omit it. The reviewed-source count cannot exceed distinct URLs.
 
-Use [`docs/guides/contributing-to-cogni.md`](docs/guides/contributing-to-cogni.md) or `/contribute-to-cogni` for the node contribution loop. Use [`docs/guides/contribute-knowledge.md`](docs/guides/contribute-knowledge.md) or `/contribute-knowledge` before preserving reusable findings.
+3. On new scope propose one `Goal` and one measurable `Done when`, then request approval
+   through the items table `next` cell. Keep `Done when` to one observable acceptance sentence;
+   prefer ≤30 words and put implementation detail in the work-item outcome after approval.
+4. Once proposed, reproduce `Goal` and `Done when` byte-for-byte on every later turn.
+   Discussion, risks, questions, or progress never reopen them. A potential pivot goes only
+   in `Status`, `next`, and `Bottom line`; change neither field until the human explicitly
+   approves the pivot.
+5. Continue agent-owned work without asking permission. Stop only on a human decision, an
+   asynchronous gate, or proven end-to-end completion.
 
-## Add a service (node-dev half)
+## Live cognition
 
-App code + `Dockerfile` + a k8s **base** manifest + the **build→GHCR** workflow leg, all here. Your CI builds + pushes the image. The operator's plane generates the per-env overlay/AppSet/catalog row that references your pushed digest.
+The gitignored cache is the live source for the rich contract, orientation, skills, and knowledge
+map. It is already model-visible before the first reply: Claude imports it from committed
+`CLAUDE.md`, Codex receives it as uncapped SessionStart developer context, and the supported
+OpenCode 1.x runtime combines it through `opencode.json`. Never manually read the cache merely to
+bootstrap; a required tool-read means the harness adapter failed.
 
-> The full operator-side guides (`create-service`, `secrets-add-new`) live in the
-> operator monorepo and are the reference for the deploy-env half.
+The shared session loader refreshes that cache from this node's authenticated
+`/api/v1/cognition` endpoint; workspace setup warms it before the first agent starts. A failed
+refresh preserves the last good copy. On first setup, register through the public
+`/api/v1/agent/register` seam and save `COGNI_NODE_API_KEY` in the gitignored `.env.cogni`;
+operator CI/CD keys are not cognition credentials.
+
+This repository owns the node app, graphs, packages, CI, and review policy. The operator at
+https://cognidao.org owns shared deployment infrastructure and coordinates flight, validation,
+and merge. Work against exactly one node + work item. Subdirectory `AGENTS.md` files extend this
+floor; the closest file wins for code-local rules.
+
+Pointers: [contributor contract](.claude/skills/contribute-to-cogni/SKILL.md) ·
+[knowledge design](docs/spec/knowledge-syntropy.md) ·
+[cognition design](https://github.com/Cogni-DAO/cogni/blob/main/docs/spec/node-baas-architecture.md#cognition-substrate) ·
+[operator discovery](https://cognidao.org/.well-known/agent.json)

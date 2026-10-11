@@ -1,0 +1,28 @@
+# Codex project config — mirrors .claude/settings.json for cross-runtime parity.
+#
+# SessionStart hook: pulls the node's cognition substrate bundle and prints it to
+# stdout, which Codex injects as developer context (developers.openai.com/codex/hooks).
+# Same mechanism + matcher shape as the Claude Code hook; both call one shared script.
+#
+# Match ALL four Codex SessionStart sources (startup|resume|clear|compact), not just
+# startup|resume: after a `compact` (context compaction) or `clear` Codex drops the
+# original session-start injection, so without them the agent loses its cognition
+# mid-session and only ever "had it on the first message". This mirrors the Claude
+# hook, which gets every source for free via its empty (all-sources) matcher.
+#
+# ONE-TIME TRUST: project-local hooks run only after you trust the .codex/ layer —
+# approve once with `/hooks` in Codex (or `--dangerously-bypass-hook-trust` for CI).
+
+[[hooks.SessionStart]]
+matcher = "startup|resume|clear|compact"
+
+[[hooks.SessionStart.hooks]]
+type = "command"
+command = 'bash "$(git rev-parse --show-toplevel)/scripts/agent/session-cognition.sh"'
+statusMessage = "Loading Cogni cognition substrate"
+# Disable Codex's default ~2,500-token head/tail spill so the FULL cognition
+# bundle surfaces as developer context — a spill cuts load-bearing instructions
+# out of the middle of the agent-contract. The loader emits raw stdout under
+# Codex and structured hookSpecificOutput.additionalContext under Claude Code;
+# both are uncapped, so the whole bundle auto-surfaces at any size (no ceiling).
+additionalContextLimit = 0
