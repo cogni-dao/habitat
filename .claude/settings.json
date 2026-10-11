@@ -1,0 +1,26 @@
+{
+  "outputStyle": "Cogni Contract",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(git rev-parse --show-toplevel)/scripts/agent/session-cognition.sh\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/scripts/agent/validate-status-contract.sh\""
+          }
+        ]
+      }
+    ]
+  }
+}
